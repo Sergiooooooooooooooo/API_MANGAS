@@ -34,7 +34,7 @@ mangasRouter.put('/:id', async (req, res) => {
     res.json({manga: updatedManga});
     })
 
-    mangasRouter.delete('/:id', async (req, res) => {
+mangasRouter.delete('/:id', async (req, res) => {
         const id = req.params.id; 
         const deletedManga = await destroy(id); 
     
