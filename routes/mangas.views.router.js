@@ -2,10 +2,19 @@ import express from "express";
 import { index, create, destroy, update } from "../services/mangas.services.js";
 export const mangasViewsRouter = express.Router();
 
+mangasViewsRouter.use((req, res, next) => {
+    if (req.isAuthenticated()) {
+        next();
+    } else {
+        res.redirect("/auth/login");
+    }
+})
+
 mangasViewsRouter.get("/", async (req, res) => {
     const mangas = await index()
     res.render('index', {
-        mangas
+        mangas,
+        user: req.user
     });
 })
 
