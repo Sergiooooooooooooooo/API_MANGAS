@@ -1,13 +1,13 @@
 import { Sequelize } from 'sequelize';
 import { defineModels } from '../db/models/index.js';
 
-// Option 2: Passing parameters separately (sqlite)
+
 export const sequelize = new Sequelize({
-    host: '127.0.0.1',
-    port: '5432',
-    username: 'postgres',
-    'password': 'postgres',
-    'database': 'api_mangas',
+    host:  process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    username: process.env.DB_USER,
+    'password': process.env.DB_PASSWORD,
+    'database': process.env.DB_NAME,
     dialect: 'postgres'
 });
 
