@@ -20,14 +20,14 @@ mangasViewsRouter.get("/", async (req, res) => {
 
 mangasViewsRouter.post("/", async (req, res) => {
     let { titulo, autor, genero, volumenes, fechaPublicacion, sinopsis, calificacion, editorial } = req.body;
-    await create ({ titulo, autor, genero, volumenes, fechaPublicacion, sinopsis, calificacion, editorial });
+    await create ({ titulo, autor, genero, volumenes, fechaPublicacion, sinopsis, calificacion, editorial, precio, imagen});
     res.redirect("/mangas");
 })
 
 mangasViewsRouter.post("/edit/:id", async (req, res) => {
     const { id } = req.params;
     let { titulo, autor, genero, volumenes, fechaPublicacion, sinopsis, calificacion, editorial } = req.body;
-    await update (id, {titulo, autor, genero, volumenes, fechaPublicacion, sinopsis, calificacion, editorial});
+    await update (id, {titulo, autor, genero, volumenes, fechaPublicacion, sinopsis, calificacion, editorial, precio, imagen});
     res.redirect("/mangas");
 })
 

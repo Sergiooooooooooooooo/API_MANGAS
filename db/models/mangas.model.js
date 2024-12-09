@@ -38,6 +38,15 @@ export function defineMangas(sequelize){
         editorial: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        precio: { 
+            type: DataTypes.DECIMAL(12, 2), 
+            allowNull: false
+        },
+        imagen: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     })
+
 }

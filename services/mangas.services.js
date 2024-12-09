@@ -14,7 +14,8 @@ async function create(manga){
         fechaPublicacion: manga.fechaPublicacion,
         sinopsis: manga.sinopsis,
         calificacion: manga.calificacion,
-        editorial: manga.editorial
+        editorial: manga.editorial,
+        precio: manga.precio
     });
     return newManga
 }
@@ -24,20 +25,21 @@ async function show(id){
     return manga
 }
 
-async function update(id, task){
+async function update(id, manga){
     const searchedManga = sequelize.models.manga.findByPk(id)
     if(!searchedManga) {
         return false
     }
    const [rowsAffected, [updatedManga]] = await sequelize.models.manga.update({
-        titulo: task.titulo,  
-        autor: task.autor,
-        genero: task.genero,
-        volumenes: task.volumenes,
-        fechaPublicacion: task.fechaPublicacion,
-        sinopsis: task.sinopsis,
-        calificacion: task.calificacion,
-        editorial: task.editorial
+        titulo: manga.titulo,  
+        autor: manga.autor,
+        genero: manga.genero,
+        volumenes: manga.volumenes,
+        fechaPublicacion: manga.fechaPublicacion,
+        sinopsis: manga.sinopsis,
+        calificacion: manga.calificacion,
+        editorial: manga.editorial,
+        precio: manga.precio
     }, {
         where: {
             id
