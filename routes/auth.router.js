@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
 export const authRouter = express.Router();
-import { signup } from "../services/auth.services.js";
+
 
 authRouter.get("/login", async (req, res) => {
     res.render("auth/login");

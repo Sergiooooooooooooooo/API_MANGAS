@@ -23,6 +23,12 @@ app.use((req, res, next) => {
     console.log('Middleware');
     next();
 })
+app._router.stack.forEach((r) => {
+    if (r.route && r.route.path) {
+        console.log(r.route.path);
+    }
+});
+
 
 
 routerMangas(app)

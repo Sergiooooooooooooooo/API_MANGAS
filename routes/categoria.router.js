@@ -24,3 +24,5 @@ CategoriaViewsrouter.get('/categorias/:id/mangas', async (req, res) => {
 });
 
 export default CategoriaViewsrouter;
+
+

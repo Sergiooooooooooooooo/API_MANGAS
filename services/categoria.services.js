@@ -32,3 +32,5 @@ export const getCategoriasByManga = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener categorías por manga', error: error.message });
     }
 };
+
+
