@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
 export function defineMangas(sequelize){
-    sequelize.define('manga', {
+    const Manga = sequelize.define('manga', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -47,6 +47,15 @@ export function defineMangas(sequelize){
             type: DataTypes.STRING,
             allowNull: false
         }
+        
     })
 
+    Manga.associate = (models) => {
+        Manga.belongsToMany(models.Categoria, {
+            through: 'MangaCategoria',       // Nombre de la tabla intermedia
+            foreignKey: 'mangaId',           // Clave foránea que apunta a Manga en la tabla intermedia
+            otherKey: 'CategoriumId'         // Clave foránea que apunta a Categoria en la tabla intermedia
+        });
+    };
+    return Manga;
 }

@@ -7,9 +7,6 @@ authRouter.get("/login", async (req, res) => {
     res.render("auth/login");
 })
 
-authRouter.get("/signup", async (req, res) => {
-    res.render("auth/signup");
-})
 
 authRouter.post("/login", passport.authenticate('local', {
         successRedirect: '/mangas',
@@ -27,8 +24,3 @@ authRouter.get("/logout", async (req, res) => {
     );
 })
 
-authRouter.post("/signup", async (req, res) => {
-    const { username, password } = req.body;
-    await signup(username, password);
-    res.redirect("/auth/login");
-})

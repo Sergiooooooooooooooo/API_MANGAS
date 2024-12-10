@@ -6,6 +6,7 @@ import { authRouter } from "./auth.router.js";
 import { mangasProductsViewsRouter } from "./mangas.products.views.router.js";
 import { carritoViewsRouter } from "./carrito.views.router.js";
 import { formulariosViewsRouter } from "./formulario.router.js";
+import { CategoriaViewsrouter } from "./categoria.router.js";
 
 
 
@@ -19,7 +20,7 @@ export function routerMangas(app){
     app.use("/mangas", mangasViewsRouter);
     app.use("/carrito", carritoViewsRouter)
     app.use("/formulario", formulariosViewsRouter)
-
+    app.use("/categorias", CategoriaViewsrouter)
 
     router.use("/file/mangas",mangasFileRouter);
     router.use("/mangas", mangasRouter);

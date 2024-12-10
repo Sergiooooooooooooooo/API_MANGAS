@@ -3,10 +3,12 @@ import { tienda, create, destroy, update } from "../services/mangas.products.ser
 export const mangasProductsViewsRouter = express.Router();
 
 mangasProductsViewsRouter.get("/", async (req, res) => {
-    const mangas = await tienda()
+    const categoriaId = req.query.categoriaId || 0;
+    const { mangas, categorias } = await tienda(categoriaId)
     res.render('tienda', {
         mangas,
-        user: req.user
+        categorias,
+        categoriaId
     });
 })
 
