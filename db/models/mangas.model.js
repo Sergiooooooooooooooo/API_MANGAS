@@ -57,5 +57,6 @@ export function defineMangas(sequelize){
             otherKey: 'CategoriumId'         // Clave foránea que apunta a Categoria en la tabla intermedia
         });
     };
+
     return Manga;
 }

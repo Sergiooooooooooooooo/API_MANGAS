@@ -98,3 +98,7 @@ h1 {
     --bs-btn-disabled-bg: #9c113f !important;
     --bs-btn-disabled-border-color: #9c113f !important;
 }
+h3 {
+    text-align: center;
+    color: #fff !important;
+}

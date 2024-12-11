@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 
 export function defineFormularios(sequelize){
-    sequelize.define('formulario', {
+    const Formulario = sequelize.define('formulario', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -26,6 +26,21 @@ export function defineFormularios(sequelize){
         telefono: {
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
+        confirmacionManga: {
+            type: DataTypes.STRING,
+            field: 'confirmacionmanga', 
+            allowNull: false // Asegúrate de que este tipo sea adecuado
+          }
     })
+
+    Formulario.associate = (models) => {
+        Formulario.belongsToMany(models.manga, {
+            through: 'formularioManga',  // Nombre de la tabla intermedia
+            foreignKey: 'formularioId', // Clave foránea que apunta a Formulario
+            otherKey: 'mangaId'         // Clave foránea que apunta a Manga
+        });
+    };
+    return Formulario;
 }
+

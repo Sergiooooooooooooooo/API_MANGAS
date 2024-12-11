@@ -9,7 +9,7 @@ authRouter.get("/login", async (req, res) => {
 
 
 authRouter.post("/login", passport.authenticate('local', {
-        successRedirect: '/mangas',
+        successRedirect: '/admin/productos',
         failureRedirect: '/auth/login',
     })
 )

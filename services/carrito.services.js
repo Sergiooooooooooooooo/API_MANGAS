@@ -9,8 +9,6 @@ async function carrito() {
 }
 
 async function agregar(mangaData) {
-    // Este es un ejemplo de cómo podrías almacenar el manga en un "carrito" temporal
-    // Si quieres usar una base de datos, deberías agregarlo en una tabla `carrito` relacionada con el usuario
     carritoEnMemoria.push(mangaData);
     return mangaData;
 }
