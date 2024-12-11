@@ -1,15 +1,15 @@
 import { sequelize } from '../libs/sequelize.js';
 
-async function categoria(){
+async function index(){
     const categorias = await sequelize.models.Categoria.findAll()
     return categorias
 }
 
 async function create(Categoria){
-    const newcategoria = await sequelize.models.Categoria.create({
-        nombre: Categoria.nombre,
+    const newCategoria = await sequelize.models.Categoria.create({
+        nombre: Categoria.nombre
     });
-    return newcategoria
+    return newCategoria
 }
 
 async function show(id){
@@ -17,13 +17,13 @@ async function show(id){
     return categoria
 }
 
-async function update(id, categoria){
-    const searchedCategoria = await sequelize.models.Categoria.findByPk(id)
+async function update(id, Categoria){
+    const searchedCategoria = sequelize.models.Categoria.findByPk(id)
     if(!searchedCategoria) {
         return false
     }
    const [rowsAffected, [updatedCategoria]] = await sequelize.models.Categoria.update({
-    nombre: categoria.nombre  
+    nombre: Categoria.nombre
     }, {
         where: {
             id
@@ -46,7 +46,7 @@ async function destroy(id) {
 
         
 export {
-    categoria,
+    index,
     create,
     show,
     update,

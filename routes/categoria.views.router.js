@@ -1,5 +1,5 @@
 import express from "express";
-import { categoria, create, destroy, update } from "../services/categoria.crud.services.js";
+import { index, create, destroy, update } from "../services/categoria.crud.services.js";
 export const categoriasViewsRouter = express.Router();
 
 categoriasViewsRouter.use((req, res, next) => {
@@ -11,7 +11,7 @@ categoriasViewsRouter.use((req, res, next) => {
 })
 
 categoriasViewsRouter.get("/", async (req, res) => {
-    const categorias = await categoria()
+    const categorias = await index()
     res.render("admin/categorias", {
         categorias,
         user: req.user

@@ -15,7 +15,8 @@ async function create(manga){
         sinopsis: manga.sinopsis,
         calificacion: manga.calificacion,
         editorial: manga.editorial,
-        precio: manga.precio
+        precio: manga.precio,
+        imagen: manga.imagen
     });
     return newManga
 }
@@ -39,7 +40,8 @@ async function update(id, manga){
         sinopsis: manga.sinopsis,
         calificacion: manga.calificacion,
         editorial: manga.editorial,
-        precio: manga.precio
+        precio: manga.precio,
+        imagen: manga.imagen
     }, {
         where: {
             id
