@@ -1,5 +1,7 @@
 import express from "express";
 export const ordenesRouter = express.Router();
+import { ordenesValidationSchema } from "../schemas/validationsCreate/ordenesValidations.js";
+import { ordenesValidationSchemaU } from "../schemas/validationsUpdate/ordenesValidations.js";
 import {index, create, show, update, destroy} from "../services/ordenes.services.js";
 
 ordenesRouter.get("/", async (req, res) => {
@@ -8,7 +10,11 @@ ordenesRouter.get("/", async (req, res) => {
 })
 
 ordenesRouter.post('/', async (req, res) => {
-    const orden = await req.body;
+    const { error, value } = ordenesValidationSchema.validate(req.body, { abortEarly: false });
+    if (error) {
+        const errorMessages = error.details.map(detail => detail.message);
+        return res.status(400).json({ errors: errorMessages });
+    }
     const newOrden = await create(orden)
     res.status(201).json({orden: newOrden});
 })
@@ -25,7 +31,12 @@ ordenesRouter.get("/:id", async (req, res) => {
 
 ordenesRouter.put('/:id', async (req, res) => {
     const id = req.params.id;
-    const orden = req.body;
+    const { error, value } = ordenesValidationSchemaU.validate(req.body, { abortEarly: false });
+
+    if (error) {
+        const errorMessages = error.details.map(detail => detail.message);
+        return res.status(400).json({ errors: errorMessages });
+    }
     const updatedOrden = await update(id, orden);
     if (!updatedOrden) {
         return res.status(404)
