@@ -10,6 +10,7 @@ mangasRouter.get("/", async (req, res) => {
 })
 
 mangasRouter.post('/', async (req, res) => {
+    const manga = await req.body;
     const { error, value } = mangasValidationSchema.validate(req.body, { abortEarly: false });
     if (error) {
         const errorMessages = error.details.map(detail => detail.message);
@@ -31,6 +32,7 @@ mangasRouter.get("/:id", async (req, res) => {
 
 mangasRouter.put('/:id', async (req, res) => {
     const id = req.params.id;
+    const manga = req.body;
     const { error, value } = mangasValidationSchemaU.validate(req.body, { abortEarly: false });
     if (error) {
         const errorMessages = error.details.map(detail => detail.message);

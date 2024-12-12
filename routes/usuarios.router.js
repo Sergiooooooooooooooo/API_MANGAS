@@ -10,6 +10,7 @@ usuariosRouter.get("/", async (req, res) => {
 })
 
 usuariosRouter.post('/', async (req, res) => {
+    const user = await req.body;
     const { error, value } = usersValidationSchema.validate(req.body, { abortEarly: false });
     if (error) {
         const errorMessages = error.details.map(detail => detail.message);
@@ -30,8 +31,9 @@ usuariosRouter.get("/:id", async (req, res) => {
 })
 
 usuariosRouter.put('/:id', async (req, res) => {
-    const id = req.params.id;
-    const { error, value } = usersValidationSchemaU.validate(req.body, { abortEarly: false });
+    const id = req.params.id;  const user = req.body;
+    const { error, value } = usersV
+  alidationSchemaU.validate(req.body, { abortEarly: false });
     if (error) {
         const errorMessages = error.details.map(detail => detail.message);
         return res.status(400).json({ errors: errorMessages });

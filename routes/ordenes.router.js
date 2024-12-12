@@ -10,6 +10,7 @@ ordenesRouter.get("/", async (req, res) => {
 })
 
 ordenesRouter.post('/', async (req, res) => {
+    const orden = await req.body;
     const { error, value } = ordenesValidationSchema.validate(req.body, { abortEarly: false });
     if (error) {
         const errorMessages = error.details.map(detail => detail.message);
@@ -31,6 +32,7 @@ ordenesRouter.get("/:id", async (req, res) => {
 
 ordenesRouter.put('/:id', async (req, res) => {
     const id = req.params.id;
+    const orden = req.body;
     const { error, value } = ordenesValidationSchemaU.validate(req.body, { abortEarly: false });
 
     if (error) {

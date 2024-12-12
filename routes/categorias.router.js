@@ -11,6 +11,7 @@ categoriasRouter.get("/", async (req, res) => {
 })
 
 categoriasRouter.post('/', async (req, res) => {
+    const categoria = await req.body;
     const { error, value } = categoriasValidationSchema.validate(req.body, { abortEarly: false });
     if (error) {
         const errorMessages = error.details.map(detail => detail.message);
@@ -32,6 +33,7 @@ categoriasRouter.get("/:id", async (req, res) => {
 
 categoriasRouter.put('/:id', async (req, res) => {
     const id = req.params.id;
+    const categoria = req.body;
     const { error, value } = categoriasValidationSchemaU.validate(req.body, { abortEarly: false });
     if (error) {
         const errorMessages = error.details.map(detail => detail.message);
